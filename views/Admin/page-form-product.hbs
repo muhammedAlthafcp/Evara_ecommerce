@@ -1,0 +1,339 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<!-- Mirrored from wp.alithemes.com/html/evara/evara-backend/page-form-product-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 01 Aug 2021 15:33:31 GMT -->
+<head>
+    <meta charset="utf-8">
+    <title>Evara Dashboard</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:title" content="">
+    <meta property="og:type" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/assetss/imgs/theme/favicon.svg">
+    <!-- Template CSS -->
+    <link href="/assetss/css/main.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div class="screen-overlay"></div>
+     <aside class="navbar-aside" id="offcanvas_aside">
+        <div class="aside-top">
+            <a href="index.html" class="brand-wrap">
+                <img src="/assetss/imgs/theme/logo.svg" class="logo" alt="Evara Dashboard">
+            </a>
+            <div>
+                <button class="btn btn-icon btn-aside-minimize"> <i class="text-muted material-icons md-menu_open"></i>
+                </button>
+            </div>
+        </div>
+        <nav>
+            <ul class="menu-aside">
+                <li class="menu-item active">
+                    <a class="menu-link" href="/Admin/Dashboard"> <i class="icon material-icons md-home"></i>
+                        <span class="text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="menu-item has-submenu">
+                    <a class="menu-link" href="/Admin/page-products-grid"> <i
+                            class="icon material-icons md-shopping_bag"></i>
+                        <span class="text">Products</span>
+                    </a>
+                    <div class="submenu">
+                        <a href="/Admin/page-products-grid">Product List</a>
+
+                    </div>
+                </li>
+                <li class="menu-item has-submenu">
+                    <a class="menu-link" href="Admin/page-orders"> <i class="icon material-icons md-shopping_cart"></i>
+                        <span class="text">Orders</span>
+                    </a>
+                    <div class="submenu">
+                        <a href="/Admin/page-orders">Order list</a>
+                    </div>
+                </li>
+
+                <li class="menu-item has-submenu">
+                    <a class="menu-link" href="/Admin/page-form-product"> <i class="icon material-icons md-add_box"></i>
+                        <span class="text">Add product</span>
+                    </a>
+                    <div class="submenu">
+                        <a href="/Admin/page-form-product">Add product </a>
+                        {{!-- <a href="page-form-product-2.html">Add product 2</a>
+                        <a href="page-form-product-3.html">Add product 3</a>
+                        <a href="page-form-product-4.html">Add product 4</a> --}}
+                    </div>
+                </li>
+                {{!-- <li class="menu-item has-submenu">
+                    <a class="menu-link" href="page-transactions-1.html"> <i
+                            class="icon material-icons md-monetization_on"></i>
+                        <span class="text">Transactions</span>
+                    </a>
+                    <div class="submenu">
+                        <a href="page-transactions-1.html">Transaction 1</a>
+                        <a href="page-transactions-2.html">Transaction 2</a>
+                    </div>
+                </li> --}}
+                <li class="menu-item has-submenu">
+                    <a class="menu-link" href="#"> <i class="icon material-icons md-person"></i>
+                        <span class="text">Account</span>
+                    </a>
+                    <div class="submenu">
+                        {{!-- <a href="page-account-login.html">User login</a> --}}
+                        <a href="/Admin/page-account-register">User registration</a>
+                        {{!-- <a href="page-error-404.html">Error 404</a> --}}
+                    </div>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link" href="/Admin/page-reviews"> <i class="icon material-icons md-comment"></i>
+                        <span class="text">User profile</span>
+                    </a>
+                </li>
+                {{!-- <li class="menu-item">
+                    <a class="menu-link" href="/Admin/page-brands"> <i class="icon material-icons md-stars"></i>
+                        <span class="text">Brands</span> </a>
+                </li> --}}
+                 <li class="menu-item">
+                    <a class="menu-link" href="/Admin/coupon"> <i class="icon material-icons md-comment"></i>
+                        <span class="text">coupon </span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link" href="/Admin/returnproduct"> <i class="icon material-icons md-comment"></i>
+                        <span class="text">returnproduct </span>
+                    </a>
+                </li>
+                {{!-- <li class="menu-item">
+                    <a class="menu-link" disabled href="#"> <i class="icon material-icons md-pie_chart"></i>
+                        <span class="text">Statistics</span>
+                    </a>
+                </li> --}}
+            </ul>
+            <hr>
+            {{!-- <ul class="menu-aside">
+                <li class="menu-item has-submenu">
+                    <a class="menu-link" href="#"> <i class="icon material-icons md-settings"></i>
+                        <span class="text">Settings</span>
+                    </a>
+                    <div class="submenu">
+                        <a href="page-settings-1.html">Setting sample 1</a>
+                        <a href="page-settings-2.html">Setting sample 2</a>
+                    </div>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link" href="page-blank.html"> <i class="icon material-icons md-local_offer"></i>
+                        <span class="text"> Starter page </span>
+                    </a>
+                </li>
+            </ul> --}}
+            <br>
+            <br>
+        </nav>
+    </aside>
+    <main class="main-wrap">
+         <header class="main-header navbar">
+            <div class="col-search">
+                <form class="searchform" action="/Admin/search" method="get">
+                    <div class="input-group">
+                        <input list="search_terms" type="text" name="search" class="form-control"
+                            placeholder="Search term">
+                        <button class="btn btn-light bg" type="submit"><i class="material-icons md-search"></i></button>
+                    </div>
+                    <datalist id="search_terms">
+                        <option value="home">
+                        <option value="New orders">
+                        <option value="Apple iphone">
+                        <option value="Ahmed Hassan">
+                    </datalist>
+                </form>
+
+            </div>
+            <div class="col-nav">
+                <button class="btn btn-icon btn-mobile me-auto" data-trigger="#offcanvas_aside"> <i
+                        class="material-icons md-apps"></i> </button>
+                <ul class="nav">
+                    {{!-- <li class="nav-item">
+                        <a class="nav-link btn-icon" href="#">
+                            <i class="material-icons md-notifications animation-shake"></i>
+                            <span class="badge rounded-pill">3</span>
+                        </a>
+                    </li> --}}
+                    <li class="nav-item">
+                        <a class="nav-link btn-icon darkmode" href="#"> <i class="material-icons md-nights_stay"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="requestfullscreen nav-link btn-icon"><i
+                                class="material-icons md-cast"></i></a>
+                    </li>
+                    <li class="dropdown nav-item">
+                        <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#" id="dropdownLanguage"
+                            aria-expanded="false"><i class="material-icons md-public"></i></a>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownLanguag3q1e">
+                            <a class="dropdown-item text-brand" href="#"><img src="/assetss/imgs/theme/flag-us.png"
+                                    alt="English">English</a>
+
+                        </div>
+                    </li>
+                    <li class="dropdown nav-item">
+                        <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#" id="dropdownAccount"
+                            aria-expanded="false"> <img class="img-xs rounded-circle"
+                                src="/assetss/imgs/people/avatar2.jpg" alt="User"></a>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownAccount">
+                            {{!-- <a class="dropdown-item" href="#"><i class="material-icons md-perm_identity"></i>Edit
+                                Profile</a>
+                            <a class="dropdown-item" href="#"><i class="material-icons md-settings"></i>Account
+                                Settings</a>
+                            <a class="dropdown-item" href="#"><i
+                                    class="material-icons md-account_balance_wallet"></i>Wallet</a>
+                            <a class="dropdown-item" href="#"><i class="material-icons md-receipt"></i>Billing</a>
+                            <a class="dropdown-item" href="#"><i class="material-icons md-help_outline"></i>Help
+                                center</a> --}}
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item text-danger" href="/logout"><i
+                                    class="material-icons md-exit_to_app"></i>Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </header>
+    <section class="content-main">
+   <form action="/Admin/product" method="POST" enctype="multipart/form-data">
+      <h5 class="card-header">Add product images</h5>
+      <div class="card-body">
+         <div class="d-flex align-items-start align-items-sm-center gap-4">
+            <!-- Container for image previews -->
+            <div id="image-previews" class="d-flex flex-wrap gap-2"></div>
+            <div class="button-wrapper">
+               <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
+                  <span class="d-none d-sm-block">Upload new images</span>
+                  <i class="bx bx-upload d-block d-sm-none"></i>
+                  <input type="file" id="upload" name="image" class="account-file-input" hidden onchange="displayImages(this)" accept="image/png, image/jpeg, image/jpg, image/gif" multiple required />
+               </label>
+               <button type="button" class="btn btn-outline-secondary account-image-reset mb-4" onclick="resetImages()">
+                  <i class="bx bx-reset d-block d-sm-none"></i>
+                  <span class="d-none d-sm-block">Reset</span>
+               </button>
+               <p class="text-muted mb-0">Allowed JPG, GIF, or PNG. Max size of 5MB each.</p>
+            </div>
+         </div>
+      </div>
+      <hr class="my-0">
+      <div class="card-body">
+         <div class="row">
+            <div class="mb-3 col-md-6">
+               <label for="firstName" class="form-label">Name:</label>
+               <input class="form-control" type="text" id="firstName" name="name" placeholder="Name of Product" autofocus required />
+            </div>
+            <div class="mb-3 col-md-6">
+               <label class="form-label">Description</label>
+               <input type="text" class="form-control" name="description" placeholder="Description" required />
+            </div>
+            <div class="mb-3 col-md-6">
+               <label class="form-label">Promotional price</label>
+               <input type="number" class="form-control" name="promotionalPrice" placeholder="Promotional price" required />
+            </div>
+            <div class="mb-3 col-md-6">
+               <label class="form-label">Discount</label>
+               <input type="number" class="form-control" name="discount" placeholder="%" required />
+            </div>
+            <div class="mb-3 col-md-6">
+               <label class="form-label">Regular price</label>
+               <input type="number" class="form-control" name="regularPrice" placeholder="Regular price" required />
+            </div>
+            <div class="mb-3 col-md-6">
+               <label class="form-label" for="category">Category</label>
+               <select id="category" name="category" class="select2 form-select" required>
+                  <option value="">Select</option>
+                  <option value="cap">cap</option>
+                  <option value="fashion">Fashion</option>
+                  <option value="Shirts">Shirts</option>
+                  <option value="Bags">Bags</option>
+                  <option value="Shoes">Shoes</option>
+                  <option value="Pants">Pants</option>
+               </select>
+            </div>
+         </div>
+         <div class="mt-2">
+            <button type="submit" class="btn btn-primary me-2">Add Product</button>
+            <button type="reset" class="btn btn-outline-secondary" onclick="resetImages()">Cancel</button>
+         </div>
+      </div>
+   </form>
+</section>
+
+<script>
+
+function displayImages(input) {
+    var previewContainer = document.getElementById('image-previews');
+    previewContainer.innerHTML = ''; // Clear previous previews
+
+    if (input.files) {
+        Array.from(input.files).forEach(file => {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                var imgElement = document.createElement('img');
+                imgElement.src = e.target.result;
+                imgElement.classList.add('d-block', 'rounded');
+                imgElement.style.height = '100px';
+                imgElement.style.width = '100px';
+                previewContainer.appendChild(imgElement);
+            };
+
+            reader.readAsDataURL(file);
+        });
+    }
+}
+
+function resetImages() {
+    var previewContainer = document.getElementById('image-previews');
+    previewContainer.innerHTML = ''; // Clear image previews
+    document.getElementById('upload').value = ''; // Clear file input
+}
+
+</script>
+ <!-- content-main end// -->
+        <footer class="main-footer font-xs">
+            <div class="row pb-30 pt-15">
+                <div class="col-sm-6">
+                    <script>
+                    document.write(new Date().getFullYear())
+                    </script> ©, Evara - HTML Ecommerce Template .
+                </div>
+                <div class="col-sm-6">
+                    <div class="text-sm-end">
+                        All rights reserved
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </main>
+    {{!-- <script>
+    function displayImage(input) {
+  var reader = new FileReader();
+
+  reader.onload = function (e) {
+    document.getElementById('user-avatar').src = e.target.result;
+  };
+
+  reader.readAsDataURL(input.files[0]);
+}
+
+</script> --}}
+    <script src="assets/js/vendors/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/vendors/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/vendors/select2.min.js"></script>
+    <script src="assets/js/vendors/perfect-scrollbar.js"></script>
+    <script src="assets/js/vendors/jquery.fullscreen.min.js"></script>
+    <!-- Main Script -->
+    <script src="assets/js/main.js" type="text/javascript"></script>
+</body>
+
+
+<!-- Mirrored from wp.alithemes.com/html/evara/evara-backend/page-form-product-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 01 Aug 2021 15:33:32 GMT -->
+</html>

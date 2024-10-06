@@ -1,0 +1,220 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<!-- Mirrored from wp.alithemes.com/html/evara/evara-backend/page-form-product-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 01 Aug 2021 15:33:31 GMT -->
+
+<head>
+    <meta charset="utf-8">
+    <title>Evara Dashboard</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:title" content="">
+    <meta property="og:type" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/assetss/imgs/theme/favicon.svg">
+    <!-- Template CSS -->
+    <link href="/assetss/css/main.css" rel="stylesheet" type="text/css" />
+</head>
+<style>
+    .btn-action {
+        width: 100px; /* Set desired width */
+        height: 35px; /* Set desired height */
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px; /* Adjust font size if needed */
+        padding: 0 10px; /* Adjust padding if needed */
+    }
+    .btn-action i {
+        margin-right: 5px; /* Space between icon and text */
+    }
+</style>
+
+<body>
+    <div class="screen-overlay"></div>
+    <aside class="navbar-aside" id="offcanvas_aside">
+        <div class="aside-top">
+            <a href="index.html" class="brand-wrap">
+                <img src="/assetss/imgs/theme/logo.svg" class="logo" alt="Evara Dashboard">
+            </a>
+            <div>
+                <button class="btn btn-icon btn-aside-minimize"> <i class="text-muted material-icons md-menu_open"></i>
+                </button>
+            </div>
+        </div>
+        <nav>
+            <ul class="menu-aside">
+                <li class="menu-item active">
+                    <a class="menu-link" href="/Admin/Dashboard"> <i class="icon material-icons md-home"></i>
+                        <span class="text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="menu-item has-submenu">
+                    <a class="menu-link" href="/Admin/page-products-grid"> <i
+                            class="icon material-icons md-shopping_bag"></i>
+                        <span class="text">Products</span>
+                    </a>
+                    <div class="submenu">
+                        <a href="/Admin/page-products-grid">Product List</a>
+
+                    </div>
+                </li>
+                <li class="menu-item has-submenu">
+                    <a class="menu-link" href="Admin/page-orders"> <i class="icon material-icons md-shopping_cart"></i>
+                        <span class="text">Orders</span>
+                    </a>
+                    <div class="submenu">
+                        <a href="/Admin/page-orders">Order list</a>
+                    </div>
+                </li>
+
+                <li class="menu-item has-submenu">
+                    <a class="menu-link" href="/Admin/page-form-product"> <i class="icon material-icons md-add_box"></i>
+                        <span class="text">Add product</span>
+                    </a>
+                    <div class="submenu">
+                        <a href="/Admin/page-form-product">Add product </a>
+                        {{!-- <a href="page-form-product-2.html">Add product 2</a>
+                        <a href="page-form-product-3.html">Add product 3</a>
+                        <a href="page-form-product-4.html">Add product 4</a> --}}
+                    </div>
+                </li>
+                {{!-- <li class="menu-item has-submenu">
+                    <a class="menu-link" href="page-transactions-1.html"> <i
+                            class="icon material-icons md-monetization_on"></i>
+                        <span class="text">Transactions</span>
+                    </a>
+                    <div class="submenu">
+                        <a href="page-transactions-1.html">Transaction 1</a>
+                        <a href="page-transactions-2.html">Transaction 2</a>
+                    </div>
+                </li> --}}
+                <li class="menu-item has-submenu">
+                    <a class="menu-link" href="#"> <i class="icon material-icons md-person"></i>
+                        <span class="text">Account</span>
+                    </a>
+                    <div class="submenu">
+                        {{!-- <a href="page-account-login.html">User login</a> --}}
+                        <a href="/Admin/page-account-register">User registration</a>
+                        {{!-- <a href="page-error-404.html">Error 404</a> --}}
+                    </div>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link" href="/Admin/page-reviews"> <i class="icon material-icons md-comment"></i>
+                        <span class="text">User profile</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link" href="/Admin/page-brands"> <i class="icon material-icons md-stars"></i>
+                        <span class="text">Brands</span> </a>
+                </li>
+                {{!-- <li class="menu-item">
+                    <a class="menu-link" disabled href="#"> <i class="icon material-icons md-pie_chart"></i>
+                        <span class="text">Statistics</span>
+                    </a>
+                </li> --}}
+            </ul>
+            <hr>
+            {{!-- <ul class="menu-aside">
+                <li class="menu-item has-submenu">
+                    <a class="menu-link" href="#"> <i class="icon material-icons md-settings"></i>
+                        <span class="text">Settings</span>
+                    </a>
+                    <div class="submenu">
+                        <a href="page-settings-1.html">Setting sample 1</a>
+                        <a href="page-settings-2.html">Setting sample 2</a>
+                    </div>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link" href="page-blank.html"> <i class="icon material-icons md-local_offer"></i>
+                        <span class="text"> Starter page </span>
+                    </a>
+                </li>
+            </ul> --}}
+            <br>
+            <br>
+        </nav>
+    </aside>
+ 
+
+
+    <main class="main-wrap">
+        <header class="main-header navbar">
+            <!-- Your existing header code here -->
+        </header>
+        <section class="content-main">
+            <form action="/Admin/Updatecoupon" method="POST">
+                <h5 class="card-header">Create Coupon</h5>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="mb-3 col-md-6">
+                            <label for="couponCode" class="form-label">Coupon Code:</label>
+                            <input class="form-control" type="text" value="{{editCoupon.couponCode}}" id="couponCode" name="couponCode"
+                                placeholder="Enter coupon code" autofocus required />
+                        </div>
+                        <div class="mb-3 col-md-6">
+                            <label class="form-label">Discount Amount (%)</label>
+                            <input type="number" class="form-control" value="{{editCoupon.discountAmount}}" name="discountAmount"
+                                placeholder="Enter discount amount" required />
+                        </div>
+                        <div class="mb-3 col-md-6">
+                            <label class="form-label">Expiration Date</label>
+                            <input type="date" class="form-control" value="{{editCoupon.formatDate.expirationDate}}" name="expirationDate" required />
+                        </div>
+                        <div class="mb-3 col-md-6">
+                            <label class="form-label">Minimum Purchase Amount</label>
+                            <input type="number" class="form-control" value="{{editCoupon.minPurchaseAmount}}"    name="minPurchaseAmount"
+                                placeholder="Minimum purchase amount" />
+                        </div>
+                    </div>
+                    <div class="mt-2">
+                        <button type="submit" class="btn btn-primary me-2">Update</button>
+                    </div>
+                </div>
+            </form>
+        </section> <!-- content-main end// -->
+        <footer class="main-footer font-xs">
+            <div class="row pb-30 pt-15">
+                <div class="col-sm-6">
+                    <script>
+                        document.write(new Date().getFullYear())
+                    </script> ©, Evara - HTML Ecommerce Template .
+                </div>
+                <div class="col-sm-6">
+                    <div class="text-sm-end">
+                        All rights reserved
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        function displayImage(input) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                document.getElementById('user-avatar').src = e.target.result;
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+
+    </script>
+    <script src="assets/js/vendors/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/vendors/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/vendors/select2.min.js"></script>
+    <script src="assets/js/vendors/perfect-scrollbar.js"></script>
+    <script src="assets/js/vendors/jquery.fullscreen.min.js"></script>
+    <!-- Main Script -->
+    <script src="assets/js/main.js" type="text/javascript"></script>
+</body>
+
+
+<!-- Mirrored from wp.alithemes.com/html/evara/evara-backend/page-form-product-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 01 Aug 2021 15:33:32 GMT -->
+
+</html>

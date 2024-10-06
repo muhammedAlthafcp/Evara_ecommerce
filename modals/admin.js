@@ -1,0 +1,28 @@
+const mongoose = require("mongoose");
+const AdminSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true,
+        trim: true,
+        minlength: [3, "Name should be at least 3 characters long"],
+        maxlength: [20, "Name should be at most 20 characters long"],
+    },
+    email: {
+        type: String,
+        required: true,
+        unique: true,
+    },
+    password: {
+        type: String,
+        required: true,
+    },
+    phonenumber: {
+        type:Number,
+        required:true,
+    }
+});
+
+const Admin = mongoose.model("Admin", AdminSchema);
+module.exports = Admin;
+
+
