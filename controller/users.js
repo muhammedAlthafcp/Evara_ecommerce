@@ -666,12 +666,14 @@ module.exports = {
         res.render('Users/shop-cart', { finddata, cartCount, wishlistCount });
     },
     shop_cart: async (req, res) => {
+
         try {
             const userid = req.user._id;
             console.log(userid);
 
             const productid = req.body.id;
             console.log(userid);
+            console.log(productid);
             
 
             // Add product to the cart
