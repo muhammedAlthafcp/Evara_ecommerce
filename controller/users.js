@@ -672,12 +672,14 @@ module.exports = {
             console.log(userid);
 
             const productid = req.body.id;
-            console.log(userid);
+        
             console.log(productid);
+            
             
 
             // Add product to the cart
             await userHelpers.cartdata(userid, productid);
+
 
             // Fetch updated cart count
             const cartCount = await productHelper.findCartCount(userid);
