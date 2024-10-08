@@ -32,7 +32,7 @@ const {
     wishlist,
     remove_from_wishlist,
     shop_carts,
-    shop_cart,
+     shop_cart,
     remove_from_cart,
     cart,
     CheckOut,

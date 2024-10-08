@@ -669,9 +669,13 @@ module.exports = {
 
         try {
             const userid = req.user._id;
+            console.log(userid);
+            
         
 
             const productid = req.body.id;
+            console.log(productid);
+            
         
           
             
