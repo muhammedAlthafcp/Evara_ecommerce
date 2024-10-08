@@ -667,6 +667,8 @@ module.exports = {
     },
     shop_cart: async (req, res) => {
         console.log("hello");
+        console.log("yes");
+        
         
 
         try {
