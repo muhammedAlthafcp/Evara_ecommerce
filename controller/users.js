@@ -666,7 +666,7 @@ module.exports = {
         res.render('Users/shop-cart', { finddata, cartCount, wishlistCount });
     },
     shop_cart: async (req, res) => {
-        console.log("hello");
+    
         
         
         
