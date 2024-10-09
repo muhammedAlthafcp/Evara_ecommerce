@@ -938,20 +938,24 @@ module.exports = {
     sendCouponCode: async (couponCode) => {
         // Example database query (replace with your actual query)
         const coupon = await Coupon.findOne({ couponCode });
-
+    
         if (!coupon) {
             throw new Error("Coupon not found.");
-        } else {
-            if (couponCode === coupon.couponCode) {
-
-            }
         }
-
+    
+        // Check if the coupon has expired
+        const currentDate = new Date();
+        if (coupon.expirationDate < currentDate) {
+           
+        }
+    
         return {
             discountAmount: coupon.discountAmount,
-            // Other properties
+            expirationDate: coupon.expirationDate,
+            // Other properties you want to return
         };
     },
+    
     ReturnProduct: async (returnProductData, userid) => {
         try {
             // Find the product by its ID
@@ -1020,6 +1024,26 @@ module.exports = {
             throw error;
         }
     },
+    username: async (userId) => {
+        try {
+            // Search for user by their user ID instead of username
+            const user = await User.findById(userId);
+            
+            // If no user is found, throw an error
+            if (!user) {
+                throw new Error('User not found');
+            }
+    
+            // Return the username if the user is found
+            return user.name
+        } catch (error) {
+            // Log the error and rethrow it
+            console.error('Error retrieving username:', error.message);
+            throw error;
+        }
+    }
+    
+    
 }   
 
 

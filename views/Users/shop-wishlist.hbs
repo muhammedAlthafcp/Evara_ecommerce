@@ -479,13 +479,15 @@
         <span>Quantity not found</span>
     {{/if}}
 </td>
-          </td>
-        <td class="text-right" data-title="Cart">
-           <a href="/shop-cart/{{this._id}}"> 
-    <button class="btn btn-sm"><i class="fi-rs-shopping-bag mr-5"></i>Add to cart</button>
-</a>
+          <td class="text-right" data-title="Cart">
+    <form action="/shop-cart/{{this._id}}" method="POST">
+        <button type="submit" class="btn btn-sm">
+            <i class="fi-rs-shopping-bag mr-5"></i>Add to cart
+        </button>
+    </form>
+</td>
 
-        </td>
+
         <td class="action" data-title="Remove">
             <a href="/delete-wishlist/{{this._id}}">
                 <i class="fi-rs-trash"></i>

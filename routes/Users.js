@@ -36,6 +36,7 @@ const {
     remove_from_cart,
     cart,
     CheckOut,
+    add_new_address,
     Place_Order,
     change_product,
     shop_orders,
@@ -48,6 +49,7 @@ const {
     ReturnProduct,
     process_return,
     checkoutOne,
+    
     
 
 } = require("../controller/users");
@@ -76,8 +78,7 @@ router.get('/shop-page-wishlist',isAuth,show_shop_page)
 router.get('/delete-wishlist/:id',isAuth,remove_from_wishlist);
 router.get('/shop-carts',isAuth,shop_carts)
 router.get('/cart',isAuth,cart);
-router.get('/shop-cart', isAuth,shop_cart,
-);
+router.post('/shop-cart/:id', isAuth, shop_cart);
 router.get('/remove-from-cart',isAuth,remove_from_cart);
 router.get('/shop-orders',isAuth,shop_orders)
 router.post('/contact-form',isAuth,contact_form)
@@ -92,6 +93,7 @@ router.get('/sendEmail',sendEmail)
 router.get('/edit-user-profile',isAuth,edit_user_profile)
 router.post('/edit-user-profile-data',isAuth,edit_user_profile_data)
 router.get('/CheckOut',isAuth,CheckOut)
+router.get('/add-new-address',isAuth,add_new_address)
 router.post('/Place-Order',isAuth,Place_Order)
 router.post('/verify-payment',isAuth,verify_payment)
 router.post('/ApplyCouponCode',isAuth,ApplyCouponCode)

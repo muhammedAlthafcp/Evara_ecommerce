@@ -666,34 +666,17 @@ module.exports = {
         res.render('Users/shop-cart', { finddata, cartCount, wishlistCount });
     },
     shop_cart: async (req, res) => {
-    
-        
-        
-        
-
         try {
             const userid = req.user._id;
             console.log(userid);
-            
-        
-
-            const productid = req.body.id;
+            const productid = req.params.id;  // Updated to get the product ID from the URL
             console.log(productid);
-            
-        
-          
-            
-            
-
             // Add product to the cart
             await userHelpers.cartdata(userid, productid);
-
-
             // Fetch updated cart count
             const cartCount = await productHelper.findCartCount(userid);
-
             // Respond with success and updated cart count
-            return res.json({ success: true, cartCount });
+            res.redirect('/cart')
         } catch (error) {
             console.error(error);
             return res.json({ success: false, error: 'Error adding product to cart.' });
@@ -747,7 +730,6 @@ module.exports = {
                 console.log("No order data available.");
                 return res.status(400).send('No order data available to generate PDF.');
             }
-
             console.log("Retrieving the first order...");
             const order = results.orders[0];
             console.log("Order retrieved:", order);
@@ -880,13 +862,53 @@ module.exports = {
         }
     },
     CheckOut: async (req, res) => {
+        try {
+            const userid = req.user._id;
+            const Address = await userHelpers.getOrderByUserId(userid);
+            const wishlistCount = await productHelper.findwishlistCount(userid);
+            const cartCount = await productHelper.findCartCount(userid);
+            const CouponCodeData = await adminHelpers.CouponCode(); // Assuming this returns valid and expired coupons
+            const username = await userHelpers.username(userid);
+            const finddata = await userHelpers.finddata(userid);
+    
+            console.log("User Name:", username);
+            console.log(CouponCodeData, 'CouponCode debug');
+    
+            // Filter valid and expired coupons
+            const validCoupons = CouponCodeData.validCoupons;
+            const expiredCoupons = CouponCodeData.expiredCoupons;
+    
+            res.render("Users/shop-checkout", { 
+                finddata, 
+                wishlistCount, 
+                cartCount, 
+                validCoupons, // Pass valid coupons
+                expiredCoupons, // Pass expired coupons
+                Address, 
+                username
+            });
+    
+        } catch (error) {
+            console.error("Checkout Error:", error);
+            res.status(500).send("Internal Server Error");
+        }
+    },
+    
+    
+    add_new_address: async (req, res) => {
         const userid = req.user._id;
+        console.log(userid);
+        
         const userId = req.params._id;
-        const Address = await userHelpers.getOrderByUserId(userid)
-        console.log(Address);
+
+        // const Address = await userHelpers.getOrderByUserId(userid)
+        // console.log(Address);
         const wishlistCount = await productHelper.findwishlistCount(userid);
         const cartCount = await productHelper.findCartCount(userid);
         const CouponCode = await adminHelpers.CouponCode(); // Assuming this returns an array
+        const username = await userhelpers.username(userid)
+        console.log("user Name :",username);
+        
         console.log(CouponCode);
 
         const finddata = await userHelpers.finddata(userid);
@@ -895,7 +917,7 @@ module.exports = {
 
         console.log(CouponCode, 'CouponCode debug');
 
-        res.render("Users/shop-checkout", { finddata, wishlistCount, cartCount, CouponCode: CouponCode[0], Address });
+        res.render("Users/shop-checkout", { finddata, wishlistCount, cartCount, CouponCode: CouponCode[0] ,username});
     },
 
 
@@ -1092,43 +1114,72 @@ module.exports = {
         }
     },
     ApplyCouponCode: async (req, res) => {
-        const couponCode = req.body.applyCoupon;
-        console.log(couponCode);
-
-        const userId = req.user._id;
-        console.log(userId);
-
-        if (!couponCode) {
-            return res.status(400).json({ success: false, message: "Coupon code is required." });
-        }
-
+        console.log("Received request to apply coupon code");
+        
+        const couponCode = req.body.applyCoupon; // Get the coupon code from the request body
+        console.log(`Coupon code received: ${couponCode}`);
+    
+        const userId = req.user._id; // Get the user ID from the session
+        console.log(`User ID: ${userId}`);
+    
         try {
+            // Fetch coupon details from userHelpers
+            console.log("Fetching coupon details...");
             const coupon = await userHelpers.sendCouponCode(couponCode);
-            console.log(coupon);
-
-            if (!coupon) {
-                return res.status(404).json({ success: false, message: "Coupon not found." });
+            console.log("Coupon details fetched:", coupon);
+    
+            // Check if the coupon is expired
+            console.log(new Date);
+            console.log(coupon.expirationDate);
+            
+            const isExpired = new Date(coupon.expirationDate) < new Date();
+            console.log(`Is the coupon expired? ${isExpired}`);
+    
+            if (isExpired) {
+                return res.status(200).json({
+                    success: false,
+                    message: "You can't use this coupon code because it has expired.",
+                    coupon // Send coupon details even if it's expired
+                });
             }
-
-            // Ensure `TotalPrice` is retrieved correctly
+    
+            // Assuming the total price is stored in the session data
             const TotalPrice = req.session.finddata.totalPrice;
-            console.log(TotalPrice);
-
-            // Subtract the discount amount from the total price
+            console.log(`Total price from session: $${TotalPrice}`);
+    
+            // Check if the total price is valid before applying the discount
+            if (TotalPrice < coupon.minPurchaseAmount) {
+                console.log(`Minimum purchase amount required: $${coupon.minPurchaseAmount}`);
+                return res.status(400).json({
+                    success: false,
+                    message: `This coupon requires a minimum purchase of $${coupon.minPurchaseAmount}.`
+                });
+            }
+    
+            // Calculate the new total price after applying the discount
             const totalPrice = TotalPrice - coupon.discountAmount;
-            console.log(totalPrice);
-
-            // Respond with couponCode and updated totalPrice
+            console.log(`Total price after discount: $${totalPrice}`);
+    
+            // Ensure the total price does not go below zero
+            const finalPrice = totalPrice < 0 ? 0 : totalPrice;
+            console.log(`Final price after adjustment: $${finalPrice}`);
+    
+            // Send success response with coupon code and updated total price
             res.status(200).json({
                 success: true,
                 couponCode: coupon.couponCode,
-                totalPrice
+                totalPrice: finalPrice
             });
         } catch (error) {
             console.error("Error applying coupon:", error);
-            res.status(500).json({ success: false, message: "An error occurred while applying the coupon." });
+            // Send a generic error message to avoid revealing sensitive information
+            res.status(500).json({ success: false, message: "An error occurred while applying the coupon code." });
         }
     },
+    
+    
+    
+
     ReturnProduct: async (req, res) => {
         const userid = req.user._id
         const wishlistCount = await productHelper.findwishlistCount(userid);
@@ -1178,4 +1229,3 @@ module.exports = {
 
 
 }
-

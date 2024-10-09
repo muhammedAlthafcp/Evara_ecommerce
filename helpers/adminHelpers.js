@@ -296,12 +296,21 @@ deleteCoupon: async (id) => {
       throw error;
   }
 },
-CouponCode : async () => {
+CouponCode: async () => {
   const currentDate = new Date();
-  const result = await Coupon.find({
-      expirationDate: { $gte: currentDate } // Find coupons that have not expired
+  const coupons = await Coupon.find();
+  const validCoupons = [];
+  const expiredCoupons = [];
+
+  coupons.forEach(coupon => {
+      if (coupon.expirationDate >= currentDate) {
+          validCoupons.push({ ...coupon._doc, isExpired: false });
+      } else {
+          expiredCoupons.push({ ...coupon._doc, isExpired: true });
+      }
   });
-  return result;
+
+  return { validCoupons, expiredCoupons };
 },
 returnProductData: async () => {
   const result = await ReturnProduct.find()
