@@ -1117,10 +1117,8 @@ module.exports = {
         console.log("Received request to apply coupon code");
         
         const couponCode = req.body.applyCoupon; // Get the coupon code from the request body
-        console.log(`Coupon code received: ${couponCode}`);
     
         const userId = req.user._id; // Get the user ID from the session
-        console.log(`User ID: ${userId}`);
     
         try {
             // Fetch coupon details from userHelpers
