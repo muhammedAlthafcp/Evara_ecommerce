@@ -1109,7 +1109,7 @@ module.exports = {
             console.error('Error in change_product:', error);
             res.status(500).json({
                 success: false,
-                message: 'An error occurred while updating the cart'
+                message: 'An error '
             });
         }
     },
