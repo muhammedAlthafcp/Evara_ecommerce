@@ -93,7 +93,6 @@ module.exports = {
  },
  New_user:async(req,res)=>{
     res.render('Admin/page-account-register')
-    console.log(1);
 
     
  },
