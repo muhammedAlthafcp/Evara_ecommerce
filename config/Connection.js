@@ -18,5 +18,4 @@ mongoose.connect(databaseUrl, {
     });
 
     
-
 module.exports = mongoose;
