@@ -9,7 +9,6 @@ mongoose.connect(databaseUrl, {
     useUnifiedTopology: true,
 })
 
-
     .then(() => {
         console.log("Connection to MongoDB was successful");
     })
