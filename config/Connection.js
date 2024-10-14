@@ -8,7 +8,6 @@ mongoose.connect(databaseUrl, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 })
-
     .then(() => {
         console.log("Connection to MongoDB was successful");
     })
@@ -16,5 +15,5 @@ mongoose.connect(databaseUrl, {
         console.error("Error in MongoDB connection", error);
         process.exit(1); 
     });
-    
+
 module.exports = mongoose;
