@@ -3,7 +3,6 @@
 Evara is a full-featured eCommerce platform built with the MERN stack (MongoDB, Express, React, and Node.js). It offers a seamless and user-friendly shopping experience with key features for both users and admins.
 
 ## Features
-
 ### User Features
 - **User Authentication:** Secure login and registration using session-based authentication.
 - **Forgot Password:** Users can reset their password through a secure password recovery process.
