@@ -19,6 +19,7 @@ Evara is a full-featured eCommerce platform built with the MERN stack (MongoDB, 
 - **Edit User Details:** Update personal information in account settings.
 
 ### Admin Features
+
 - **Admin Dashboard:** Manage products, orders, users, coupons, and return requests.
 - **Product Management:** View, edit, delete products, and add multiple images.
 - **Order Management:** Manage customer orders and update statuses.
