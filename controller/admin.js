@@ -9,7 +9,6 @@ Handlebars.registerHelper('eq', function (a, b, options) {
     return a === b ? options.fn(this) : options.inverse(this);
 });
 
-
 const fs = require('fs');
 const adminHelpers = require('../helpers/adminHelpers');
 module.exports = {
