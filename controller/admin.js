@@ -7,7 +7,6 @@ const Handlebars = require('handlebars');
 // Register the 'eq' helper
 Handlebars.registerHelper('eq', function (a, b, options) {
     return a === b ? options.fn(this) : options.inverse(this);
-    
 });
 
 
