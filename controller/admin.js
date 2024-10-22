@@ -29,7 +29,6 @@ module.exports = {
         const totalRevenue = await adminHelpers.totalRevenue()
         const shopProducts = await adminHelpers.orderDatas();
        
-
         console.log(productCount);
         res.render('Admin/index',{productCount,orderCount,totalRevenue,shopProducts});
     },
