@@ -8,7 +8,6 @@ const Handlebars = require('handlebars');
 Handlebars.registerHelper('eq', function (a, b, options) {
     return a === b ? options.fn(this) : options.inverse(this);
 });
-
 const fs = require('fs');
 const adminHelpers = require('../helpers/adminHelpers');
 module.exports = {
@@ -30,7 +29,6 @@ module.exports = {
         const totalRevenue = await adminHelpers.totalRevenue()
         const shopProducts = await adminHelpers.orderDatas();
        
-
 
         console.log(productCount);
         res.render('Admin/index',{productCount,orderCount,totalRevenue,shopProducts});
