@@ -83,8 +83,7 @@ module.exports = {
     res.render('Admin/user-datas',{user});
  },
  New_user:async(req,res)=>{
-    res.render('Admin/page-account-register')
-   
+    res.render('Admin/page-account-register') 
  },
 
  New_user_data: async (req, res) => {
