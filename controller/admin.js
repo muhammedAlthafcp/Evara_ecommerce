@@ -82,7 +82,6 @@ module.exports = {
     console.log('aljkf;alf;',user);
     
     res.render('Admin/user-datas',{user});
-
  },
  New_user:async(req,res)=>{
     res.render('Admin/page-account-register')
