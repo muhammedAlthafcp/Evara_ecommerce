@@ -80,7 +80,6 @@ module.exports = {
     const user = req.body
     const userdataas = await adminHelpers.edit_User_data(userData);
     console.log('aljkf;alf;',user);
-    
     res.render('Admin/user-datas',{user});
  },
  New_user:async(req,res)=>{
