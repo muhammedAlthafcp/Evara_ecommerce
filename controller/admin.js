@@ -88,7 +88,6 @@ module.exports = {
  New_user_data: async (req, res) => {
     try {
         const { name, email, phonenumber, password } = req.body;
-
         // Check if the email already exists
         const existingUser = await adminHelpers.findUserByEmail(email);
         if (existingUser) {
