@@ -93,7 +93,6 @@ module.exports = {
         if (existingUser) {
             return res.status(400).send('Email already exists');
         }
-
         // Hash the password before storing it
         const hashedPassword = await bcrypt.hash(password, 10);
 
