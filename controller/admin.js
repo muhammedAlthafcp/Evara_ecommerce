@@ -95,7 +95,6 @@ module.exports = {
         }
         // Hash the password before storing it
         const hashedPassword = await bcrypt.hash(password, 10);
-
         // Create the user object
         const user = { name, email, phonenumber, password: hashedPassword };
 
