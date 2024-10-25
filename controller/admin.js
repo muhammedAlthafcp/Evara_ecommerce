@@ -97,7 +97,6 @@ module.exports = {
         const hashedPassword = await bcrypt.hash(password, 10);
         // Create the user object
         const user = { name, email, phonenumber, password: hashedPassword };
-
         // Save the user to the database
         const newUser = await adminHelpers.addUser(user);
         console.log(newUser);
