@@ -106,7 +106,6 @@ module.exports = {
             const totalRevenue = await adminHelpers.totalRevenue()
             const orderdata = await adminHelpers.orderDatas();
             console.log("hello man this is your datas", orderdata);
-    
             res.render('Admin/index',{productCount,orderCount,totalRevenue,orderdata});
                } else {
             // Handle user creation failure
