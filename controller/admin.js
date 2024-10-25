@@ -99,8 +99,7 @@ module.exports = {
         const user = { name, email, phonenumber, password: hashedPassword };
         // Save the user to the database
         const newUser = await adminHelpers.addUser(user);
-        console.log(newUser);
-        
+        console.log(newUser);        
         if (newUser) {
             const productCount = await adminHelpers.productCount()
             const orderCount = await adminHelpers.orderCount()
