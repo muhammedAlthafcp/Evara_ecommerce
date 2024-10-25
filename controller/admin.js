@@ -101,7 +101,6 @@ module.exports = {
         const newUser = await adminHelpers.addUser(user);
         console.log(newUser);
         
-
         if (newUser) {
             const productCount = await adminHelpers.productCount()
             const orderCount = await adminHelpers.orderCount()
