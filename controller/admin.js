@@ -158,14 +158,13 @@ module.exports = {
     //         res.status(400).send('Error processing request');
     //     }
     // },
-   
+
     add_product: async (req, res) => {
         try {
             if (!req.files || !req.files.image) {
                 return res.status(400).send('No files uploaded');
             }
             console.log("hello man this is your datas", req.body);
-    
             const images = Array.isArray(req.files.image) ? req.files.image : [req.files.image];
             console.log(req.files.image);
     
