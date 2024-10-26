@@ -167,7 +167,6 @@ module.exports = {
             console.log("hello man this is your datas", req.body);
             const images = Array.isArray(req.files.image) ? req.files.image : [req.files.image];
             console.log(req.files.image);
-    
             const uploadDir = './public/products-images';
             if (!fs.existsSync(uploadDir)) {
                 fs.mkdirSync(uploadDir, { recursive: true });
