@@ -172,7 +172,6 @@ module.exports = {
                 fs.mkdirSync(uploadDir, { recursive: true });
             }
             console.log(uploadDir);
-    
             const imagePaths = [];
             for (const image of images) {
                 const imagePath = path.join(uploadDir, image.name);
