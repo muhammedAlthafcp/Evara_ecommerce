@@ -179,7 +179,6 @@ module.exports = {
                 await image.mv(imagePath);
                 imagePaths.push(image.name); // Store only the image name
             }
-    
             const productData = {
                 ...req.body,
                 imagePath: imagePaths // Store array of image names
