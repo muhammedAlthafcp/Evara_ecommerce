@@ -35,9 +35,8 @@ const {
   returnproduct,
   update_return_status,
   delete_return
-  // category
 
-
+  
 } = require('../controller/admin')
 const isAdmin = require('../middleware/isAdmin')
 const upload = require('../config/multer')
