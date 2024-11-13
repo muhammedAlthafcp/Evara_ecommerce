@@ -36,7 +36,7 @@ const {
   update_return_status,
   delete_return
 
-  
+
 } = require('../controller/admin')
 const isAdmin = require('../middleware/isAdmin')
 const upload = require('../config/multer')
@@ -51,8 +51,6 @@ router.get('/page-orders',page_orders)
 router.get('/page-orders-detail/:id',page_orders_detail)
 router.get('/Details-user/:id',Details_user)
 router.post('/user-data-edit-Admin',user_data_edit_Admin)
-
-
 router.get('/New-user',New_user)
 router.post('/New-user-data',New_user_data)
 router.get('/page-form-product',page_form_product)
