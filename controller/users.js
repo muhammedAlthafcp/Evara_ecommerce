@@ -19,7 +19,6 @@ const PDFDocument = require('pdfkit');
 const { dir } = require('console');
 
 
-
 module.exports = {
     loginpage: async (req, res) => {
         if (req.session.admin) {
