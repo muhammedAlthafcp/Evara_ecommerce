@@ -170,7 +170,7 @@ searchdata: async (searchQuery) => {
             console.error(err);
         }
     },
-    filterByPrice: async (minPrice, maxPrice) => {
+    filterByPrice: async (minPrice, maxPrice) => { 
         try {
             const products = await Product.find({
                 regularPrice: {

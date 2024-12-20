@@ -170,7 +170,7 @@ module.exports = {
             const existuser = await userHelpers.findexistuser(data.email);
 
             console.log("User check:", existuser);
-
+ 
             // OTP generation function
             const generateOTP = () => {
                 return otpGenerator.generate(6, { upperCase: false, specialChars: false });
@@ -178,7 +178,7 @@ module.exports = {
 
             var OTP = generateOTP();
             console.log("Generated OTP:", OTP);
-           
+        
             
 
             // Email sending function
@@ -202,6 +202,7 @@ module.exports = {
                 });
             
                 console.log("Email sent successfully");
+                
             };
             
 
@@ -656,7 +657,7 @@ module.exports = {
         }
 
         // Set the totalPrice in session
-        req.session.finddata.totalPrice = finddata.totalPrice;
+        // req.session.finddata.totalPrice = finddata.totalPrice;
         console.log("TotalPrice:", req.session.finddata.totalPrice);
 
         res.render('Users/shop-cart', { finddata, cartCount, wishlistCount });
