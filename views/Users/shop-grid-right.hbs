@@ -718,6 +718,8 @@
                             <li><a href="#">Help</a></li>
                             <li><a href="#">Order</a></li>
                         </ul>
+
+                        
                     </div>
                     <div class="col-lg-4">
                         <h5 class="widget-title wow fadeIn animated">Install App</h5>
@@ -813,7 +815,7 @@
                 var productId = $(this).data('id');
 
                 $.ajax({
-                    
+
                     url: '/shop-cart',
                     type: 'POST',
                     data: { id: productId },
