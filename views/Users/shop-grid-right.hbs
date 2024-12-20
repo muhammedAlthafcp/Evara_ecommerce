@@ -813,6 +813,7 @@
                 var productId = $(this).data('id');
 
                 $.ajax({
+                    
                     url: '/shop-cart',
                     type: 'POST',
                     data: { id: productId },
