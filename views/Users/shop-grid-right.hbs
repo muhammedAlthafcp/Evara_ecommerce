@@ -719,7 +719,7 @@
                             <li><a href="#">Order</a></li>
                         </ul>
 
-                        
+
                     </div>
                     <div class="col-lg-4">
                         <h5 class="widget-title wow fadeIn animated">Install App</h5>
@@ -782,7 +782,6 @@
             $('.add-wishlist-btn').on('click', function (e) {
                 e.preventDefault();
                 var productId = $(this).data('id');
-
                 $.ajax({
                     url: '/add-wishlist',
                     type: 'POST',
