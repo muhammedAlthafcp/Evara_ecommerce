@@ -26,6 +26,7 @@ var app = express();
 
 const hbs = require('hbs');
 
+
 // Register a Handlebars helper to check if two values are equal
 hbs.registerHelper('statusMatch', function (status1, status2) {
     return status1 === status2;
