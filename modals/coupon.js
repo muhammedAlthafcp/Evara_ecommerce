@@ -9,4 +9,5 @@ const couponSchema = new mongoose.Schema({
 });
 const Coupon = mongoose.model('Coupon', couponSchema);
 
+
 module.exports = Coupon;
