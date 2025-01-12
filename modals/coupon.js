@@ -6,13 +6,7 @@ const couponSchema = new mongoose.Schema({
     expirationDate: { type: Date, required: true }, // Expiration date for the coupon
     minPurchaseAmount: { type: Number, required: true }, // Minimum purchase amount required to use the coupon
     createdAt: { type: Date, default: Date.now } // Automatically set the creation date
-
-
 });
-
-
-
-
 const Coupon = mongoose.model('Coupon', couponSchema);
 
 module.exports = Coupon;
