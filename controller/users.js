@@ -601,8 +601,6 @@ module.exports = {
 
         res.render('Users/shop-wishlist', { wishlist, wishlistCount, cartCount, })
     },
-
-
     remove_from_wishlist: async (req, res) => {
         try {
             const userid = req.user._id;
