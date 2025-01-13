@@ -610,8 +610,6 @@ module.exports = {
             console.log(wishlist);
 
             res.render('Users/shop-wishlist', { wishlist })
-
-
             // Redirect to the wishlist page with the updated data
             res.redirect('/wishlist'); // Adjust the path as necessary
         } catch (error) {
