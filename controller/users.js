@@ -631,7 +631,6 @@ module.exports = {
         const cartCount = await productHelper.findCartCount(userid);
 
         var shopProducts = await productHelper.shopProduct();
-        ;
         res.render('Users/shop-grid-right', { shopProducts,cartCount,wishlistCount})
     },
     cart: async (req, res) => {
