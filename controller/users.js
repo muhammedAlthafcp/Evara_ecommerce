@@ -648,7 +648,6 @@ module.exports = {
         // Set the totalPrice in session
         // req.session.finddata.totalPrice = finddata.totalPrice;
         console.log("TotalPrice:", req.session.finddata.totalPrice);
-
         res.render('Users/shop-cart', { finddata, cartCount, wishlistCount });
     },
     shop_cart: async (req, res) => {
