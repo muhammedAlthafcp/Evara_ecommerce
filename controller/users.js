@@ -645,7 +645,6 @@ module.exports = {
         if (!req.session.finddata) {
             req.session.finddata = {};
         }
-
         // Set the totalPrice in session
         // req.session.finddata.totalPrice = finddata.totalPrice;
         console.log("TotalPrice:", req.session.finddata.totalPrice);
