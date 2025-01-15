@@ -639,7 +639,6 @@ module.exports = {
         const userId = req.params._id;
         const wishlistCount = await productHelper.findwishlistCount(userid);
         const cartCount = await productHelper.findCartCount(userid);
-
         const finddata = await userHelpers.finddata(userid);
         console.log("Finddata:", finddata);
         // Initialize req.session.finddata if it does not exist
