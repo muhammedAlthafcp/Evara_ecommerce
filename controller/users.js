@@ -626,10 +626,10 @@ module.exports = {
         // console.log(userid);
         const produdctid = req.query.id
         // console.log(produdctid);
+
         const cartdata = await userHelpers.cartdata(userid, produdctid)
         const wishlistCount = await productHelper.findwishlistCount(userid);
         const cartCount = await productHelper.findCartCount(userid);
-
         var shopProducts = await productHelper.shopProduct();
         res.render('Users/shop-grid-right', { shopProducts,cartCount,wishlistCount})
     },
@@ -642,7 +642,6 @@ module.exports = {
 
         const finddata = await userHelpers.finddata(userid);
         console.log("Finddata:", finddata);
-
         // Initialize req.session.finddata if it does not exist
         if (!req.session.finddata) {
             req.session.finddata = {};
