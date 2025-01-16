@@ -634,35 +634,48 @@ module.exports = {
         res.render('Users/shop-grid-right', { shopProducts,cartCount,wishlistCount})
     },
     cart: async (req, res) => {
-        const userid = req.user._id;
-        console.log("UserID:", userid);
-        const userId = req.params._id;
-        const wishlistCount = await productHelper.findwishlistCount(userid);
-        const cartCount = await productHelper.findCartCount(userid);
-        const finddata = await userHelpers.finddata(userid);
-        console.log("Finddata:", finddata);
-        // Initialize req.session.finddata if it does not exist
-        if (!req.session.finddata) {
-            req.session.finddata = {};
+        try {
+            const userid = req.user._id;
+            console.log("UserID:", userid);
+    
+            // Fetch wishlist count and cart count
+            const wishlistCount = await productHelper.findwishlistCount(userid);
+            const cartCount = await productHelper.findCartCount(userid);
+    
+            // Fetch cart data
+            const finddata = await userHelpers.finddata(userid);
+            console.log("Finddata:", finddata);
+    
+            // Initialize req.session.finddata if it does not exist
+            if (!req.session.finddata) {
+                req.session.finddata = {};
+            }
+    
+            // Set the totalPrice in session from finddata
+            req.session.finddata.totalPrice = finddata.totalPrice;
+    
+            // Log the session data to confirm
+            console.log("Session TotalPrice:", req.session.finddata.totalPrice);
+    
+            // Render the cart page
+            res.render('Users/shop-cart', { finddata, cartCount, wishlistCount });
+        } catch (error) {
+            console.error("Error in cart function:", error);
+            res.status(500).send("Error fetching cart data");
         }
-
-        // Set the totalPrice in session
-        // req.session.finddata.totalPrice = finddata.totalPrice;
-        console.log("TotalPrice:", req.session.finddata.totalPrice);
-
-        res.render('Users/shop-cart', { finddata, cartCount, wishlistCount });
     },
+    
     shop_cart: async (req, res) => {
         try {
             const userid = req.user._id;
-            console.log(userid , "hello");
+            console.log(userid , "hello my name is pathu");
             const productid = req.body.id;  // Updated to get the product ID from the URL
             console.log(productid);
             // Add product to the cart
             await userHelpers.cartdata(userid, productid);
             // Fetch updated cart count
             const cartCount = await productHelper.findCartCount(userid);
-            console.log(cartCount ,"hello my ");
+            console.log(cartCount ,"hello");
             
             // Respond with success and updated cart count
             res.redirect('/cart')

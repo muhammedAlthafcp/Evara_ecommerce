@@ -69,39 +69,74 @@ findwishlistCount: async (userID) => {
   },
 
 // Helper function to find cart count
+// findCartCount: async (userId) => {
+//     try {
+//       console.log("User ID:", userId);
+
+//       // Find all carts for the specified user
+//       const carts = await Cart.find({ user: userId });
+
+//       if (!carts || carts.length === 0) {
+//         console.log("No carts found for user:", userId);
+//         return 0;
+//       }
+
+//       // Use a Set to track unique product IDs
+//       const uniqueProducts = new Set();
+
+//       // Add each product ID to the Set
+//       carts.forEach(cart => {
+//         cart.items.forEach(item => {
+//           uniqueProducts.add(item.product.toString()); // Ensure IDs are strings
+//         });
+//       });
+
+//       // The number of unique products is the size of the Set
+//       const uniqueProductCount = uniqueProducts.size;
+
+//       console.log("Total unique products in cart:", uniqueProductCount);
+//       return uniqueProductCount;
+//     } catch (error) {
+//       console.error('Error finding unique product count in cart:', error);
+//       throw error;
+//     }
+//   },
+
 findCartCount: async (userId) => {
     try {
-      console.log("User ID:", userId);
+        if (!userId) {
+            throw new Error("Invalid or missing userId");
+        }
 
-      // Find all carts for the specified user
-      const carts = await Cart.find({ user: userId });
+        console.log("Fetching carts for user ID:", userId);
 
-      if (!carts || carts.length === 0) {
-        console.log("No carts found for user:", userId);
-        return 0;
-      }
+        // Find the cart for the user
+        const cart = await Cart.findOne({ user: userId });
 
-      // Use a Set to track unique product IDs
-      const uniqueProducts = new Set();
+        if (!cart || !cart.items || cart.items.length === 0) {
+            console.log("No items found in cart for user:", userId);
+            return 0;
+        }
 
-      // Add each product ID to the Set
-      carts.forEach(cart => {
+        // Use a Set to track unique product IDs
+        const uniqueProducts = new Set();
+
+        // Add each product ID to the Set
         cart.items.forEach(item => {
-          uniqueProducts.add(item.product.toString()); // Ensure IDs are strings
+            console.log("Processing product ID:", item.product);
+            uniqueProducts.add(item.product.toString()); // Ensure IDs are strings
         });
-      });
 
-      // The number of unique products is the size of the Set
-      const uniqueProductCount = uniqueProducts.size;
+        // The number of unique products is the size of the Set
+        const uniqueProductCount = uniqueProducts.size;
 
-      console.log("Total unique products in cart:", uniqueProductCount);
-      return uniqueProductCount;
+        console.log("Total unique products in cart:", uniqueProductCount);
+        return uniqueProductCount;
     } catch (error) {
-      console.error('Error finding unique product count in cart:', error);
-      throw error;
+        console.error('Error finding unique product count in cart:', error);
+        throw error;
     }
-  },
-
+},
 
 findProductDatas : async (data) => {
     const result = await Product.findOne({_id: data}).lean(8);

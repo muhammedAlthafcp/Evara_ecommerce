@@ -156,52 +156,111 @@ module.exports = {
     },
 
 
+    // cartdata: async (userid, productid) => {
+    //     try {
+    //         console.log(productid);
+
+    //         const productToAdd = await Product.findById(productid);
+
+    //         if (!productToAdd) {
+    //             throw new Error('Product not found');
+    //         }
+
+    //         let cart = await Cart.findOne({ user: userid });
+
+    //         if (!cart) {
+    //             cart = new Cart({
+    //                 user: userid,
+    //                 items: [{ product: productid, quantity: 1 }],
+    //                 totalPrice: productToAdd.price || 0
+    //             });
+    //         } else {
+    //             const itemIndex = cart.items.findIndex(item => item.product.toString() === productid);
+    //             if (itemIndex > -1) {
+    //                 cart.items[itemIndex].quantity += 1;
+    //             } else {
+    //                 cart.items.push({ product: productid, quantity: 1 });
+    //             }
+
+    //             const productIds = cart.items.map(item => item.product);
+    //             const cartProducts = await Product.find({ _id: { $in: productIds } });
+
+    //             cart.totalPrice = cart.items.reduce((acc, item) => {
+    //                 const itemProduct = cartProducts.find(product => product._id.toString() === item.product.toString());
+    //                 return acc + (item.quantity * (itemProduct?.price || 0));
+    //             }, 0);
+    //         }
+
+    //         if (isNaN(cart.totalPrice) || cart.totalPrice < 0) {
+    //             cart.totalPrice = 0;
+    //         }
+
+    //         await cart.save();
+    //         return cart;
+    //     } catch (error) {
+    //         console.error(error);
+    //         throw error;
+    //     }
+    // },
+
     cartdata: async (userid, productid) => {
         try {
             console.log(productid);
-
+    
+            // Fetch the product to be added to the cart
             const productToAdd = await Product.findById(productid);
-
+    
             if (!productToAdd) {
                 throw new Error('Product not found');
             }
-
+    
+            // Fetch the cart for the user
             let cart = await Cart.findOne({ user: userid });
-
+    
             if (!cart) {
+                // If no cart exists, create a new one
                 cart = new Cart({
                     user: userid,
                     items: [{ product: productid, quantity: 1 }],
                     totalPrice: productToAdd.price || 0
                 });
             } else {
+                // Update the cart with the new product or increment the quantity if it's already in the cart
                 const itemIndex = cart.items.findIndex(item => item.product.toString() === productid);
                 if (itemIndex > -1) {
                     cart.items[itemIndex].quantity += 1;
                 } else {
                     cart.items.push({ product: productid, quantity: 1 });
                 }
-
+    
+                // Calculate the total price of the cart
                 const productIds = cart.items.map(item => item.product);
                 const cartProducts = await Product.find({ _id: { $in: productIds } });
-
+    
+                // Recalculate totalPrice by multiplying each product price by its quantity
                 cart.totalPrice = cart.items.reduce((acc, item) => {
                     const itemProduct = cartProducts.find(product => product._id.toString() === item.product.toString());
                     return acc + (item.quantity * (itemProduct?.price || 0));
                 }, 0);
             }
-
+    
+            // Ensure totalPrice is valid
             if (isNaN(cart.totalPrice) || cart.totalPrice < 0) {
                 cart.totalPrice = 0;
             }
-
+    
+            // Save the updated cart to the database
             await cart.save();
             return cart;
+    
         } catch (error) {
             console.error(error);
             throw error;
         }
     },
+    
+
+
 
     finddata: async (userid) => {
         try {
