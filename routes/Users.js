@@ -77,7 +77,7 @@ router.get('/shop-page-wishlist',isAuth,show_shop_page)
 router.get('/delete-wishlist/:id',isAuth,remove_from_wishlist);
 router.get('/shop-carts',isAuth,shop_carts)
 router.get('/cart',isAuth,cart);
-router.post('/shop-cart/:id', isAuth, shop_cart);
+router.post('/shop-cart', isAuth, shop_cart);
 router.get('/remove-from-cart',isAuth,remove_from_cart);
 router.get('/shop-orders',isAuth,shop_orders)
 router.post('/contact-form',isAuth,contact_form)

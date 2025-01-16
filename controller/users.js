@@ -645,21 +645,25 @@ module.exports = {
         if (!req.session.finddata) {
             req.session.finddata = {};
         }
+
         // Set the totalPrice in session
         // req.session.finddata.totalPrice = finddata.totalPrice;
         console.log("TotalPrice:", req.session.finddata.totalPrice);
+
         res.render('Users/shop-cart', { finddata, cartCount, wishlistCount });
     },
     shop_cart: async (req, res) => {
         try {
             const userid = req.user._id;
-            console.log(userid);
-            const productid = req.params.id;  // Updated to get the product ID from the URL
+            console.log(userid , "hello");
+            const productid = req.body.id;  // Updated to get the product ID from the URL
             console.log(productid);
             // Add product to the cart
             await userHelpers.cartdata(userid, productid);
             // Fetch updated cart count
             const cartCount = await productHelper.findCartCount(userid);
+            console.log(cartCount ,"hello my name is pathu");
+            
             // Respond with success and updated cart count
             res.redirect('/cart')
         } catch (error) {
