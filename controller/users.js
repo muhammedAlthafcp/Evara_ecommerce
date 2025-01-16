@@ -662,7 +662,7 @@ module.exports = {
             await userHelpers.cartdata(userid, productid);
             // Fetch updated cart count
             const cartCount = await productHelper.findCartCount(userid);
-            console.log(cartCount ,"hello my name is");
+            console.log(cartCount ,"hello my name");
             
             // Respond with success and updated cart count
             res.redirect('/cart')
