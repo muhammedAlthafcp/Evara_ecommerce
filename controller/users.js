@@ -359,11 +359,20 @@ module.exports = {
             res.render('Users/shop-grid-right', { shopProducts });
            }else{
             const sessiondata = req.session.user
+
+            console.log(sessiondata , 
+                "data"
+            );
+            
             const proid = sessiondata._id
             const searchQuery = req.query.search || ''; // Default to an empty string if no query is provided
             const shopProducts = await productHelper.searchdata(searchQuery);
             const wishlistCount = await productHelper.findwishlistCount(proid)
+            console.log(wishlistCount);
+            
             const cartCount = await productHelper.findCartCount(proid)
+            res.render('Users/shop-grid-right', { shopProducts,wishlistCount,cartCount });
+
 
            
            }
@@ -537,16 +546,33 @@ module.exports = {
         const userid = req.user._id
         console.log(userid);
         const userdata = await userHelpers.findUsertDatas(userid)
+        console.log(userdata ,'userdata');
         res.render('Users/edit-user-profile', { userdata })
     },
 
     edit_user_profile_data: async (req, res) => {
-        const userid = req.user._id
-        console.log(userid);
-        const userupdate = req.body
-        const userdatas = await userHelpers.edituserdata(userupdate, userid)
-        res.redirect('/edit-user-profile')
+        try {
+            const userid = req.user._id;
+            console.log("User ID:", userid);
+    
+            const userupdate = req.body;
+            console.log("User Update Data:", userupdate);
+    
+            // Update user data
+            const userdatas = await userHelpers.edituserdata(userupdate, userid);
+            console.log("Update Result:", userdatas);
+    
+            if (userdatas.modifiedCount === 0) {
+                console.error("No changes made to the user data");
+            }
+    
+            res.redirect('/edit-user-profile');
+        } catch (error) {
+            console.error("Error updating user profile:", error);
+            res.status(500).send("Error updating user profile");
+        }
     },
+    
 
     show_home_wishlist: async (req, res) => {
         try {

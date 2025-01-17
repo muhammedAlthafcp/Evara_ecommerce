@@ -37,14 +37,25 @@ module.exports = {
         return result;
     },
     edituserdata: async (userupdate, userid) => {
-        const result = await User.updateOne({ _id: userid }, {
-            $set: {
-                name: userupdate.name,
-                phonenumber: userupdate.phonenumber
+        try {
+            const result = await User.updateOne(
+                { _id: userid },
+                { $set: { name: userupdate.name, phonenumber: userupdate.phonenumber } }
+            );
+    
+            console.log("Database Update Result:", result);
+    
+            if (result.modifiedCount === 0) {
+                console.warn("No fields were updated. Verify that the new values differ from the existing ones.");
             }
-        });
-        return result;
+    
+            return result;
+        } catch (error) {
+            console.error("Error in edituserdata:", error);
+            throw error;
+        }
     },
+    
     deleteuser: async (data) => {
         await User.deleteOne({ _id: data });
     },
