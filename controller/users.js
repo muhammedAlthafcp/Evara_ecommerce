@@ -397,10 +397,9 @@ module.exports = {
             const cartCount = await productHelper.findCartCount(proid)
             res.render("Users/shop-grid-right", { shopProducts, wishlistCount, cartCount });
 
-        } 
-    
+        }     
     },
-    
+
     filter: async (req, res) => {
         console.log(req.body);
         const userId = req.params._id
