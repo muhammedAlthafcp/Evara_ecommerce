@@ -376,8 +376,6 @@ module.exports = {
        
            }
     },
-
-
     category: async (req, res) => {
         if (!req.session.user) {
             const categoryName = req.query.id;
