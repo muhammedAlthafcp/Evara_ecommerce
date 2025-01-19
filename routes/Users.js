@@ -82,6 +82,7 @@ router.get('/remove-from-cart',isAuth,remove_from_cart);
 router.get('/shop-orders',isAuth,shop_orders)
 router.post('/contact-form',isAuth,contact_form)
 
+
 router.get('/shop-product-right', shop_product_right);
 router.get('/page-contact', page_contact);
 router.get('/page-privacy-policy', page_privacy_policy);

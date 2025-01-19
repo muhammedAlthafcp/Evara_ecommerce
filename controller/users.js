@@ -372,14 +372,15 @@ module.exports = {
             
             const cartCount = await productHelper.findCartCount(proid)
             res.render('Users/shop-grid-right', { shopProducts,wishlistCount,cartCount });
-    
+
+       
            }
     },
     category: async (req, res) => {
         if (!req.session.user) {
             const categoryName = req.query.id;
             const shopProducts = await productHelper.category(categoryName);
-            console.log(shopProducts);
+            console.log(shopProducts , "hello how are you my ");
             res.render("Users/shop-grid-right", { shopProducts});
 
         }else{
@@ -462,7 +463,6 @@ module.exports = {
             
             const editProduct = await productHelper.findProductDatas(proid)
             console.log(editProduct,"editproduct");
-            
             var shopProducts = await productHelper.shopProduct();
             console.log(shopProducts,'shopProduc');
             res.render('Users/shop-product-right', { editProduct, shopProducts});
