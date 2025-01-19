@@ -68,6 +68,7 @@ router.get('/forgotPasswordEmail',forgotPasswordEmail);
 router.post('/forgotPasswordEmailsend',forgotPasswordEmailsend);
 router.post('/forgotPasswordOTPsend',forgotPasswordOTPsend);
 router.post('/NewPasswordsend',NewPasswordsend);
+
 router.get('/category',category)
 router.get('/search',search)
 router.post('/filter',filter)
