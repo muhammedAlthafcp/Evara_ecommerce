@@ -476,11 +476,12 @@ module.exports = {
             const cartCount = await productHelper.findCartCount(userId)
             res.render('Users/shop-product-right', { editProduct, shopProducts, cartCount, wishlistCount });
         }},
+        
     page_contact: async (req, res) => {
         if (!req.session.user) {
             res.render('Users/page-contact');
 
-            
+
         } else {
             const sessiondata = req.session.user
             const userId = sessiondata._id
