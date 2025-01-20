@@ -481,7 +481,6 @@ module.exports = {
         if (!req.session.user) {
             res.render('Users/page-contact');
 
-
         } else {
             const sessiondata = req.session.user
             const userId = sessiondata._id
