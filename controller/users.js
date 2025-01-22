@@ -515,7 +515,6 @@ module.exports = {
         }
 
 
-
     },
     shop_right: async (req, res) => {
         if (!req.session.user) {
