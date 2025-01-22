@@ -476,10 +476,10 @@ module.exports = {
             const cartCount = await productHelper.findCartCount(userId)
             res.render('Users/shop-product-right', { editProduct, shopProducts, cartCount, wishlistCount });
         }},
-
         page_contact: async (req, res) => {
         if (!req.session.user) {
             res.render('Users/page-contact');
+
 
         } else {
             const sessiondata = req.session.user
@@ -531,11 +531,9 @@ module.exports = {
             const wishlistCount = await productHelper.findwishlistCount(userId)
             console.log(wishlistCount);
             const cartCount = await productHelper.findCartCount(userId)
-
             res.render('Users/shop-grid-right', { shopProducts, cartCount, wishlistCount })
 
         }
-
     },
     edit_user_profile: async (req, res) => {
         const userid = req.user._id
