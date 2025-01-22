@@ -514,7 +514,6 @@ module.exports = {
             res.render('Users/page-about', { wishlistCount, cartCount });
         }
 
-
     },
     shop_right: async (req, res) => {
         if (!req.session.user) {
