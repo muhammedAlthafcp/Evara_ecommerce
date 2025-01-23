@@ -514,7 +514,7 @@ module.exports = {
             res.render('Users/page-about', { wishlistCount, cartCount });
         }
     },
-    shop_right: async (req, res) => {
+        shop_right: async (req, res) => {
         if (!req.session.user) {
             var shopProducts = await productHelper.shopProduct();
             console.log(shopProducts);
@@ -636,7 +636,6 @@ module.exports = {
             });
         }
     }, 
-
         shop_carts: async (req, res) => {
         const userid = req.user._id
         // console.log(userid);
