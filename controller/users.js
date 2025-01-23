@@ -641,7 +641,6 @@ module.exports = {
         // console.log(userid);
         const produdctid = req.query.id
         // console.log(produdctid);
-
         const cartdata = await userHelpers.cartdata(userid, produdctid)
         const wishlistCount = await productHelper.findwishlistCount(userid);
         const cartCount = await productHelper.findCartCount(userid);
