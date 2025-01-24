@@ -480,11 +480,13 @@
     {{/if}}
 </td>
           <td class="text-right" data-title="Cart">
-    <form action="/shop-cart/{{this._id}}" method="POST">
-        <button type="submit" class="btn btn-sm">
-            <i class="fi-rs-shopping-bag mr-5"></i>Add to cart
-        </button>
-    </form>
+  <form action="/shop-cart" method="POST">
+    <input type="hidden" name="id" value="{{this._id}}">
+    <button type="submit" class="btn btn-sm">
+        <i class="fi-rs-shopping-bag mr-5"></i>Add to cart
+    </button>
+</form>
+
 </td>
         <td class="action" data-title="Remove">
             <a href="/delete-wishlist/{{this._id}}">

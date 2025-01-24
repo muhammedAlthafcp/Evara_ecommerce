@@ -564,7 +564,7 @@ module.exports = {
     },
     
 
-    show_home_wishlist: async (req, res) => {
+     show_home_wishlist: async (req, res) => {
         try {
             const userId = req.user._id;
             const productId = req.body.id;
@@ -638,11 +638,9 @@ module.exports = {
     }, 
         shop_carts: async (req, res) => {
         const userid = req.user._id
-        // console.log(userid);
-
-        
+        console.log(userid);
         const produdctid = req.query.id
-        // console.log(produdctid);
+        console.log(produdctid);
         const cartdata = await userHelpers.cartdata(userid, produdctid)
         const wishlistCount = await productHelper.findwishlistCount(userid);
         const cartCount = await productHelper.findCartCount(userid);
@@ -681,26 +679,46 @@ module.exports = {
         }
     },
     
+    // shop_cart: async (req, res) => {
+
+    //     try {
+    //         const userid = req.user._id;
+    //         console.log(userid , "hello my name is pathu");
+    //         const productid = req.body.id;  // Updated to get the product ID from the URL
+    //         console.log(productid);
+    //         // Add product to the cart
+    //         await userHelpers.cartdata(userid, productid);
+    //         // Fetch updated cart count
+    //         const cartCount = await productHelper.findCartCount(userid);
+    //         console.log(cartCount ,"hello");
+            
+    //         // Respond with success and updated cart count
+    //         res.redirect('/cart')
+    //     } catch (error) {
+    //         console.error(error);
+    //         return res.json({ success: false, error: 'Error adding product to cart.' });
+    //     }
+    // },
+
     shop_cart: async (req, res) => {
         try {
             const userid = req.user._id;
-            console.log(userid , "hello my name is pathu");
-            const productid = req.body.id;  // Updated to get the product ID from the URL
-            console.log(productid);
+            const productid = req.body.id;
+    
             // Add product to the cart
             await userHelpers.cartdata(userid, productid);
+    
             // Fetch updated cart count
             const cartCount = await productHelper.findCartCount(userid);
-            console.log(cartCount ,"hello");
-            
+    
             // Respond with success and updated cart count
-            res.redirect('/cart')
+            return res.json({ success: true, cartCount });
         } catch (error) {
-            console.error(error);
-            return res.json({ success: false, error: 'Error adding product to cart.' });
+            console.error("Error in shop_cart function:", error);
+            return res.status(500).json({ success: false, error: 'Error adding product to cart.' });
         }
     },
-
+    
     shop_orders: async (req, res) => {
         try {
             const userid = req.user._id;
