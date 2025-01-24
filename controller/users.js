@@ -718,7 +718,6 @@ module.exports = {
             return res.status(500).json({ success: false, error: 'Error adding product to cart.' });
         }
     },
-    
     shop_orders: async (req, res) => {
         try {
             const userid = req.user._id;
