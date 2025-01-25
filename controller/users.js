@@ -732,7 +732,6 @@ module.exports = {
                 const order = result.orders[0];
                 const status = order.status;
                 const grandTotal = result.grandTotal;
-
                 // Calculate balance based on order status
                 const balance = await userHelpers.balance(userid, status, grandTotal);
                 console.log('Balance:', balance);
