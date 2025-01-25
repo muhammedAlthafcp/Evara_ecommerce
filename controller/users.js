@@ -737,7 +737,6 @@ module.exports = {
                 console.log('Balance:', balance);
                 // Assign result to session
                 req.session.result = result;
-
                 // Fetch wishlist and cart counts
                 const wishlistCount = await productHelper.findwishlistCount(userid);
                 const cartCount = await productHelper.findCartCount(userid);
