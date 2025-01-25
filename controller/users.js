@@ -726,7 +726,6 @@ module.exports = {
             // Fetch order details
             const result = await userHelpers.orders_detail(userid);
             console.log('Order Details:', result);
-
             // Ensure result contains the orders array
             if (result.orders && result.orders.length > 0) {
                 const order = result.orders[0];
