@@ -735,7 +735,6 @@ module.exports = {
                 // Calculate balance based on order status
                 const balance = await userHelpers.balance(userid, status, grandTotal);
                 console.log('Balance:', balance);
-
                 // Assign result to session
                 req.session.result = result;
 
