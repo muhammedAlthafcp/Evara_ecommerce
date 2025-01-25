@@ -740,7 +740,6 @@ module.exports = {
                 // Fetch wishlist and cart counts
                 const wishlistCount = await productHelper.findwishlistCount(userid);
                 const cartCount = await productHelper.findCartCount(userid);
-
                 // Render the order page
                 res.render('Users/order', { result, wishlistCount, cartCount });
             } else {
