@@ -21,9 +21,6 @@ module.exports = {
 
 
 
-
-
-            
             // Save the contact to the database
             const result = await contact.save();
             return result;
