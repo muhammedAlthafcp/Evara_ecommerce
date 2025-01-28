@@ -17,8 +17,7 @@ module.exports = {
                 telephone: data.telephone,
                 message: data.message
             });
-    
-            // Save the contact to the database
+        // Save the contact to the database
             const result = await contact.save();
             return result;
         } catch (error) {
