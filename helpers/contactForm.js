@@ -18,6 +18,7 @@ module.exports = {
                 message: data.message
             });
     
+            
             // Save the contact to the database
             const result = await contact.save();
             return result;
