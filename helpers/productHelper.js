@@ -242,6 +242,5 @@ searchdata: async (searchQuery) => {
     }
 },
 
-
 }
 
