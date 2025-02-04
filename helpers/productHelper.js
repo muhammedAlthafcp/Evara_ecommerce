@@ -248,11 +248,3 @@ searchdata: async (searchQuery) => {
 
 
 
-
-
-
-
-
-
-
-
