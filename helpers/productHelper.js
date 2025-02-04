@@ -243,4 +243,3 @@ searchdata: async (searchQuery) => {
 },
 
 }
-
