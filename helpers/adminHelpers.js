@@ -322,7 +322,6 @@ returnProductData: async () => {
       path: 'userId',
       select: 'name',  // Assuming 'name' is the field for user name
     });
-
   // Format the results to include desired fields
   return result.map(returnProduct => ({
     _id: returnProduct._id,  // Include the ID for actions
@@ -378,7 +377,6 @@ updateReturnStatus: async (id, status) => {
       throw error;
   }
 },
-
 findAndUpdateOrderStatus: async (userId, productId, returnStatus) => {
   try {
       const order = await Order.findOne({
