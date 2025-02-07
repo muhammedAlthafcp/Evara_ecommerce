@@ -309,7 +309,6 @@ CouponCode: async () => {
           expiredCoupons.push({ ...coupon._doc, isExpired: true });
       }
   });
-
   return { validCoupons, expiredCoupons };
 },
 returnProductData: async () => {
