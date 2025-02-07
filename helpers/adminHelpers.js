@@ -13,11 +13,13 @@ module.exports = {
     return result;
   },
 
-  
+
   findAdmin: async (email) => {
     const result = await Admin.findOne({ email }).lean();
     return result;
   },
+
+  
   productCount: async () => {
     try {
       const result = await Product.find().countDocuments();
