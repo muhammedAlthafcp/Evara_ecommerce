@@ -301,7 +301,6 @@ CouponCode: async () => {
   const coupons = await Coupon.find();
   const validCoupons = [];
   const expiredCoupons = [];
-
   coupons.forEach(coupon => {
       if (coupon.expirationDate >= currentDate) {
           validCoupons.push({ ...coupon._doc, isExpired: false });
