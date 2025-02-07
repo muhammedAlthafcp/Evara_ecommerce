@@ -334,9 +334,6 @@ returnProductData: async () => {
     userName: returnProduct.userId ? returnProduct.userId.name : 'Unknown User',  // Check if userId exists
   }));
 },
-
-
-
 //  updateOrderStatus : async (id) => {
 //   try {
 //       const result = await ReturnProduct.find(
@@ -402,7 +399,6 @@ findAndUpdateOrderStatus: async (userId, productId, returnStatus) => {
           if (newStatus) {
               order.status = newStatus;
               await order.save();
-
               return { success: true, message: 'Order status updated successfully', order };
           } else {
               return { success: false, message: 'Invalid return status provided' };
@@ -415,18 +411,9 @@ findAndUpdateOrderStatus: async (userId, productId, returnStatus) => {
       throw new Error('Internal server error');
   }
 },
-
-
-
-
-
-
 findByIdAndDelete:async(id)=>{
-  
     const result = await ReturnProduct.findByIdAndDelete(id);
     return result
-
 }
-
 }
 
