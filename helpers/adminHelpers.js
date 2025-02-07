@@ -12,6 +12,8 @@ module.exports = {
     const result = await Admin.create(data);
     return result;
   },
+
+  
   findAdmin: async (email) => {
     const result = await Admin.findOne({ email }).lean();
     return result;
