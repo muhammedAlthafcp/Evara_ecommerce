@@ -25,6 +25,9 @@ module.exports = {
       throw error; // rethrow the error so the calling function knows something went wrong
     }
   },
+
+
+  
   orderCount: async () => {
     try {
       const result = await Order.find().countDocuments();
