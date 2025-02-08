@@ -18,7 +18,6 @@ module.exports = {
     const result = await Admin.findOne({ email }).lean();
     return result;
   },
-
   productCount: async () => {
     try {
       const result = await Product.find().countDocuments();
