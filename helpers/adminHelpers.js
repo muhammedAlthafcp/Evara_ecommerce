@@ -26,7 +26,6 @@ module.exports = {
     }
   },
 
-
   orderCount: async () => {
     try {
       const result = await Order.find().countDocuments();
