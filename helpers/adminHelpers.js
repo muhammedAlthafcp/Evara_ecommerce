@@ -165,12 +165,7 @@ module.exports = {
     } catch (error) {
       console.error('Error finding users by name:', error);
       throw error;
-    }
-
-
-
-
-    
+    } 
 
   },
   getUser: async (userid) => {
