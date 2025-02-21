@@ -79,9 +79,6 @@ module.exports = {
   orderDatas: async () => {
     const result = await Order.find().limit(10).lean();
     return result;
-
-
-    
   },
   orders_detail: async (orderId) => {
     try {
