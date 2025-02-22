@@ -410,6 +410,3 @@ findByIdAndDelete:async(id)=>{
     return result
 }
 }
-
-
-
