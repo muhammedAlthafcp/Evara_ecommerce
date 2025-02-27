@@ -381,7 +381,10 @@ findAndUpdateOrderStatus: async (userId, productId, returnStatus) => {
       });
 
       if (order) {
+
           // Map the return status to an appropriate order status
+          
+          
           let newStatus;
           if (returnStatus === 'Approved') {
               newStatus = 'Processing'; // Mapping approved return to processing order
@@ -409,6 +412,5 @@ findByIdAndDelete:async(id)=>{
     const result = await ReturnProduct.findByIdAndDelete(id);
     return result
 }
+
 }
-
-
