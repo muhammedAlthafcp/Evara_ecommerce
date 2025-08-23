@@ -11,5 +11,4 @@ const block_unblockschema = new mongoose.Schema({
 
 const blockUser = mongoose.model('blockUser', block_unblockschema);
 
-
 module.exports = blockUser;
