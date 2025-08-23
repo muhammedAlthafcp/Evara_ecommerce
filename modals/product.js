@@ -8,6 +8,7 @@ const productSchema = new mongoose.Schema({
     discount : { type: Number, required: true }, // 
     description: { type: String }, // Optional field
     category: { type: String, required: true } // Made required to match the form
+    
 });
 
 const productData = mongoose.model('products', productSchema);
