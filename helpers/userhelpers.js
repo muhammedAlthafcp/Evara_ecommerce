@@ -147,7 +147,6 @@ module.exports = {
             if (!wishlist) {
                 return null;
             }
-
             // Find the index of the item to be removed
             const itemIndex = wishlist.items.findIndex(item => item.product && item.product._id.toString() === productid);
             if (itemIndex === -1) {
