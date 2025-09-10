@@ -154,7 +154,6 @@ module.exports = {
             }
             // Remove the item from the wishlist
             wishlist.items.splice(itemIndex, 1);
-
             // Save the updated wishlist
             await wishlist.save();
             return wishlist;
