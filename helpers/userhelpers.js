@@ -152,7 +152,6 @@ module.exports = {
             if (itemIndex === -1) {
                 return null;
             }
-
             // Remove the item from the wishlist
             wishlist.items.splice(itemIndex, 1);
 
