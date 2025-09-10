@@ -163,7 +163,6 @@ module.exports = {
         }
     },
 
-
     // cartdata: async (userid, productid) => {
     //     try {
     //         console.log(productid);
