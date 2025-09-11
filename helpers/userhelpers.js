@@ -273,7 +273,7 @@ module.exports = {
             if (!cart) {
                 return null;
             }
-    
+
             // Check if cart.items exists and is an array
             if (!Array.isArray(cart.items)) {
                 return null;
