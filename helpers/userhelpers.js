@@ -266,7 +266,6 @@ module.exports = {
         }
     },
     
-
     finddata: async (userid) => {
         try {
             const cart = await Cart.findOne({ user: userid }).populate('items.product').exec();
