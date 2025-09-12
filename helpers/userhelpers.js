@@ -297,8 +297,7 @@ module.exports = {
                 };
             }).filter(item => item !== null); // Filter out null items
     
-            const totalPrice = cartItems.reduce((total, item) => total + item.Subtotal, 0);
-    
+            const totalPrice = cartItems.reduce((total, item) => total + item.Subtotal, 0);  
             return {
                 user: cart.user,
                 items: cartItems,
