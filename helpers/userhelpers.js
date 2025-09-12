@@ -283,7 +283,6 @@ module.exports = {
                     console.warn(`Product for item ${item._id} is null`);
                     return null;
                 }
-                
                 return {
                     _id: item.product._id,
                     name: item.product.name,
