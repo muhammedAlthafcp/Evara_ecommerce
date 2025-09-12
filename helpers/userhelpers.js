@@ -276,8 +276,7 @@ module.exports = {
             // Check if cart.items exists and is an array
             if (!Array.isArray(cart.items)) {
                 return null;
-            }
-    
+            }   
             const cartItems = cart.items.map(item => {
                 // Ensure item.product is not null
                 if (!item.product) {
