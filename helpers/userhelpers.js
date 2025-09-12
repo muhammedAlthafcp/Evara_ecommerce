@@ -359,7 +359,6 @@ module.exports = {
             if (!cart) {
                 return null;
             }
-
             const cartItems = cart.items.map(item => ({
                 // product: item.product,
                 _id: item.product._id,
