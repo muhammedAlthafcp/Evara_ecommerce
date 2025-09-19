@@ -53,6 +53,7 @@ const {
 const isAuth = require('../middleware/isAuth');
 const back =require('../middleware/back')
 
+
 router.get('/Downlod',Downlod)
 router.get('/',back,homepage)
 router.get('/login',back, loginpage);

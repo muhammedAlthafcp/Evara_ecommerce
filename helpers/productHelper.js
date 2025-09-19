@@ -127,6 +127,7 @@ findCartCount: async (userId) => {
             uniqueProducts.add(item.product.toString()); // Ensure IDs are strings
         });
 
+        
         // The number of unique products is the size of the Set
         const uniqueProductCount = uniqueProducts.size;
 

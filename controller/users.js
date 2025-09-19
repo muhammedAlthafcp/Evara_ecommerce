@@ -76,84 +76,6 @@ module.exports = {
             res.send('hello');
         }
     },
-    // signup: async (req, res) => {
-    //     try {
-    //         const { name, email, password, phonenumber } = req.body;
-
-    //         const data = {
-    //             name,
-    //             email,
-    //             password,
-    //             phonenumber,
-    //         };
-
-    //         console.log(data);
-
-    //         const existuser = await userHelpers.findexistuser(data.email);
-
-    //         console.log("hello", existuser);
-    //         console.log(existuser);
-
-    //         const generateOTP = () => {
-    //             return otpGenerator.generate(6, { upperCase: false, specialChars: false });
-    //         };
-    //         var OTP = generateOTP();
-    //         console.log(OTP,"hi muhammed");
-
-
-    //         const sendEmail = async (email) => {
-    //             const transporter = nodemailer.createTransport({
-    //                 host: "smtp.gmail.com",
-    //                 port: 465,
-    //                 secure: true,
-    //                 auth: {
-    //                     user: process.env.NODEMAILER_EMAIL,
-    //                     pass: process.env.NODEMAILER_PASSWORD,
-    //                 },
-    //             });
-    //             console.log(OTP);
-
-    //             await transporter.sendMail({
-    //                 from: process.env.NODEMAILER_EMAIL,
-    //                 to: email,
-    //                 subject: "Welcome to Our Platform",
-    //                 text: "Hello, welcome to our platform!",
-    //                 html: '<b>Hello world?</b><br>Visit  ${OTP}',
-    //             });
-
-    //             console.log("Email sent successfully");
-    //         };
-
-    //         if (existuser && existuser.email) {
-    //             res.render('Users/page-login-register', { existMessage: "User already exists" });
-    //         } else if (password.length !== 5) {
-    //             res.render('Users/page-login-register', { passwordMessage: "Password must be exactly 5 characters long" });
-    //         } else if (phonenumber.length !== 10) {
-    //             res.render('Users/page-login-register', { phonenumberMessag: "Phone number must be exactly 10 digits long" });
-    //         } else {
-    //             const saltRounds = 10;
-    //             const hashpassword = await bcrypt.hash(password, saltRounds);
-    //             data.password = hashpassword;
-    //             const user = await userHelpers.insertuser(data);
-
-    //             console.log(req.session);
-    //             console.log(req.session.user);
-
-    //             await sendEmail(data.email);
-
-    //             req.session.loggedIn = true;
-    //             req.session.user = user;
-
-    //             res.render("Users/otp")
-    //         }
-    //     } catch (error) {
-    //         console.error(error);
-    //         res.render('Users/page-login-register', { errorMessage: "Error occurred during registration" });
-    //     }
-    // },
-
-
-
     signup: async (req, res) => {
         try {
             const { name, email, password, phonenumber } = req.body;
@@ -456,26 +378,43 @@ module.exports = {
 
     },
 
-    shop_product_right: async (req, res) => {
-        if (!req.session.user){
-            const proid = req.query.id
-            console.log(proid ,"product id");
-            
-            const editProduct = await productHelper.findProductDatas(proid)
-            console.log(editProduct,"editproduct");
-            var shopProducts = await productHelper.shopProduct();
-            console.log(shopProducts,'shopProduc');
-            res.render('Users/shop-product-right', { editProduct, shopProducts});
-        }else{
-            const sessiondata = req.session.user
-            const userId = sessiondata._id
-            const proid = req.query.id
-            const editProduct = await productHelper.findProductDatas(proid)
-            var shopProducts = await productHelper.shopProduct();
-            const wishlistCount = await productHelper.findwishlistCount(userId)
-            const cartCount = await productHelper.findCartCount(userId)
-            res.render('Users/shop-product-right', { editProduct, shopProducts, cartCount, wishlistCount });
-        }},
+  shop_product_right: async (req, res) => {
+  try {
+    const proid = req.query.id;
+    console.log(proid, "product id");
+
+    const editProduct = await productHelper.findProductDatas(proid);
+    console.log(editProduct, "editproduct");
+
+    const shopProducts = await productHelper.shopProduct();
+    console.log(shopProducts, "shopProducts");
+
+    if (!req.session.user) {
+      return res.render('Users/shop-product-right', {
+        editProduct,
+        shopProducts
+      });
+    }
+
+    const userId = req.session.user._id;
+    const wishlistCount = await productHelper.findwishlistCount(userId);
+    const cartCount = await productHelper.findCartCount(userId);
+
+    res.render('Users/shop-product-right', {
+      editProduct,
+      shopProducts,
+      cartCount,
+      wishlistCount
+    });
+  } catch (err) {
+    console.error("❌ Error loading product page:", err);
+    res.status(500).send("Internal Server Error");
+  }
+}
+,
+
+
+        
         page_contact: async (req, res) => {
         if (!req.session.user) {
             res.render('Users/page-contact');
@@ -647,37 +586,47 @@ module.exports = {
         var shopProducts = await productHelper.shopProduct();
         res.render('Users/shop-grid-right', { shopProducts,cartCount,wishlistCount})
     },
-    cart: async (req, res) => {
-        try {
-            const userid = req.user._id;
-            console.log("UserID:", userid);
-    
-            // Fetch wishlist count and cart count
-            const wishlistCount = await productHelper.findwishlistCount(userid);
-            const cartCount = await productHelper.findCartCount(userid);
-    
-            // Fetch cart data
-            const finddata = await userHelpers.finddata(userid);
-            console.log("Finddata:", finddata);
-    
-            // Initialize req.session.finddata if it does not exist
-            if (!req.session.finddata) {
-                req.session.finddata = {};
-            }
-    
-            // Set the totalPrice in session from finddata
-            req.session.finddata.totalPrice = finddata.totalPrice;
-    
-            // Log the session data to confirm
-            console.log("Session TotalPrice:", req.session.finddata.totalPrice);
-    
-            // Render the cart page
-            res.render('Users/shop-cart', { finddata, cartCount, wishlistCount });
-        } catch (error) {
-            console.error("Error in cart function:", error);
-            res.status(500).send("Error fetching cart data");
+   cart: async (req, res) => {
+    try {
+        const userid = req.user._id;
+        console.log("UserID:", userid);
+
+        // Fetch wishlist count and cart count
+        const wishlistCount = await productHelper.findwishlistCount(userid);
+        const cartCount = await productHelper.findCartCount(userid);
+
+        // Fetch cart data
+        const finddata = await userHelpers.finddata(userid);
+        console.log("Finddata:", finddata);
+
+        // Initialize req.session.finddata if it does not exist
+        if (!req.session.finddata) {
+            req.session.finddata = {};
         }
-    },
+
+        if (finddata) {
+            // If data exists, set totalPrice in session
+            req.session.finddata.totalPrice = finddata.totalPrice;
+        } else {
+            // If cart is empty, set default values
+            req.session.finddata.totalPrice = 0;
+        }
+
+        console.log("Session TotalPrice:", req.session.finddata.totalPrice);
+
+        // Render the cart page
+        res.render('Users/shop-cart', { 
+            finddata, 
+            cartCount, 
+            wishlistCount 
+        });
+
+    } catch (error) {
+        console.error("Error in cart function:", error);
+        res.status(500).send("Error fetching cart data");
+    }
+},
+
     
     // shop_cart: async (req, res) => {
 
@@ -700,7 +649,8 @@ module.exports = {
     //     }
     // },
 
-    shop_cart: async (req, res) => {
+   
+ shop_cart: async (req, res) => {
         try {
             const userid = req.user._id;
             const productid = req.body.id;
@@ -1072,7 +1022,6 @@ module.exports = {
         res.redirect('/shop-orders');
     },
 
-
     verify_payment: async (req, res) => {
         const { razorpay_payment_id, razorpay_order_id, razorpay_signature } = req.body;
 
@@ -1090,31 +1039,6 @@ module.exports = {
         }
     },
 
-
-
-
-    // change_product: async (req, res) => {
-    //     try {
-    //         const userid = req.user._id;
-    //         const productid = req.body.productid;
-
-    //         console.log('Extracted values:', { userid, productid });
-
-    //         // Call your helper function to get updated cart data
-    //         const cartdata = await userHelpers.ajexdata(userid, productid);
-    //         console.log(cartdata, 'hello');
-
-    //         res.json({ success: true, subtotal: cartdata.subtotal, totalPrice: cartdata.totalPrice });
-    //     } catch (error) {
-    //         console.error(error);
-    //         res.status(500).json({ success: false, message: 'An error occurred' });
-    //     }
-    // },
-
-
-
-    // var shopProducts = await productHelper.shopProduct();
-    // console.log(shopProducts);
     sendEmail: (req, res) => {
         res.render("Users/page-sendemail")
     },
@@ -1143,6 +1067,7 @@ module.exports = {
             });
         }
     },
+
     ApplyCouponCode: async (req, res) => {
         console.log("Received request to apply coupon code");
         
@@ -1204,9 +1129,6 @@ module.exports = {
             res.status(500).json({ success: false, message: "An error occurred while applying the coupon code." });
         }
     },
-    
-    
-    
 
     ReturnProduct: async (req, res) => {
         const userid = req.user._id
@@ -1214,9 +1136,8 @@ module.exports = {
         const cartCount = await productHelper.findCartCount(userid);
         const productId = req.params.id;
         res.render('Users/returnProduct', { productId ,wishlistCount,cartCount})
-
-
     },
+
     process_return: async (req, res) => {
         try {
             // Get the user ID from the authenticated user's session or token
@@ -1238,6 +1159,7 @@ module.exports = {
             res.status(500).json({ success: false, message: 'Failed to process product return', error: error.message });
         }
     },
+
     checkoutOne: async (req, res) => {
         const userid = req.user._id;
         const produdctid = req.query.id
